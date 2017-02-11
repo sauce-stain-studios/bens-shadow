@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentDimension = Dimension.Real;
-		audioSourceSource = GameObject.FindWithTag("AudioController").GetComponent<AudioController>();
+		audioSource = GameObject.FindWithTag("AudioController").GetComponent<AudioController>();
 	}
 
 	void FixedUpdate() {
