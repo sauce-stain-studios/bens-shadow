@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour {
 
 	private GameController gc;
 
+	public GameController.Dimension activeDimension;
+
 	public float xSpeed = 3.0f;
 	public float ySpeed = 3.0f;
 	public float padding = 1.0f;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (gc.getCurrentDimension() == GameController.Dimension.Real) {
+		if (gc.getCurrentDimension() == activeDimension) {
 			float vertical = Input.GetAxis("Vertical") * Time.deltaTime * ySpeed;
 			float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * xSpeed;
 			Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
