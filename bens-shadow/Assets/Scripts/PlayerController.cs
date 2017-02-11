@@ -3,17 +3,23 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public float xSpeed = 10.0f;
-	public float ySpeed = 10.0f;
+	private GameController gc;
+
+	public float xSpeed = 3.0f;
+	public float ySpeed = 3.0f;
 	public float padding = 1.0f;
-	
+
 	float xmin;
 	float xmax;
 	float ymin;
 	float ymax;
-	
+
 	// Use this for initialization
 	void Start () {
+
+		// Initialize Reference to GameController
+		gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
 		float distance = transform.position.z - Camera.main.transform.position.z;
 		Vector3 leftMost = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance));
 		Vector3 rightMost = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance));
@@ -24,13 +30,15 @@ public class PlayerController : MonoBehaviour {
 		ymin = downMost.y + padding;
 		ymax = upMost.y - padding;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		float vertical = Input.GetAxis("Vertical") * Time.deltaTime * ySpeed;
-		float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * xSpeed;
-		Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
-		transform.position += movement;
+	void FixedUpdate () {
+		if (gc.getCurrentDimension() == GameController.Dimension.Real) {
+			float vertical = Input.GetAxis("Vertical") * Time.deltaTime * ySpeed;
+			float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * xSpeed;
+			Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
+			transform.position += movement;
+		}
 		/*
 		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
 			if (Input.GetKey(KeyCode.LeftArrow)) {
@@ -44,13 +52,13 @@ public class PlayerController : MonoBehaviour {
 		}
 			//float newX = Mathf.Clamp (transform.position.x, xmin, xmax);
 			//transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-		} else 
+		} else
 		if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)) {
-		
+
 		if (Input.GetKey(KeyCode.UpArrow)) {
 			Vector3 moveUp = new Vector3 (0f, ySpeed * Time.deltaTime, 0f);
 			transform.position += moveUp;
-		} else 
+		} else
 		if (Input.GetKey(KeyCode.DownArrow)) {
 			Vector3 moveDown = new Vector3 (0f, -ySpeed * Time.deltaTime, 0f);
 			transform.position += moveDown;
@@ -61,6 +69,6 @@ public class PlayerController : MonoBehaviour {
 		*/
 		print (xmax);
 	}
-	
-	
+
+
 }
