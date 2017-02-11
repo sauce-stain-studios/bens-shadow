@@ -24,7 +24,6 @@ public class Door : MonoBehaviour, IActivatable {
 		} else {
 			state = DoorState.Open;
 		}
-		Debug.Log(state);
 	}
 
 }

@@ -7,14 +7,14 @@ public class GameController : MonoBehaviour {
 	public enum Dimension { Real, Shadow };
 
 	Dimension currentDimension;
-	AudioController audio;
+	AudioController audioSource;
 
 	public bool debugMode;
 
 	// Use this for initialization
 	void Start () {
 		currentDimension = Dimension.Real;
-		audio = GameObject.FindWithTag("AudioController").GetComponent<AudioController>();
+		audioSourceSource = GameObject.FindWithTag("AudioController").GetComponent<AudioController>();
 	}
 
 	void FixedUpdate() {
@@ -32,12 +32,12 @@ public class GameController : MonoBehaviour {
 
 	public void setDimensionReal() {
 		currentDimension = Dimension.Real;
-		audio.changeMusic();
+		audioSource.changeMusic();
 	}
 
 	public void setDimensionShadow() {
 		currentDimension = Dimension.Shadow;
-		audio.changeMusic();
+		audioSource.changeMusic();
 	}
 
 	public Dimension getCurrentDimension() {
