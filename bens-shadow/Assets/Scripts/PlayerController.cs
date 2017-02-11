@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		// Initialize Reference to GameController
 		gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 
@@ -39,36 +38,13 @@ public class PlayerController : MonoBehaviour {
 			Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
 			transform.position += movement;
 		}
-		/*
-		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
-			if (Input.GetKey(KeyCode.LeftArrow)) {
-				Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
-				Vector3 moveLeft = Vector3.left * xSpeed * Time.deltaTime;
-				transform.position += movement;
-
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
-			Vector3 moveRight = Vector3.right * xSpeed * Time.deltaTime;
-			transform.position += moveRight;
-		}
-			//float newX = Mathf.Clamp (transform.position.x, xmin, xmax);
-			//transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-		} else
-		if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)) {
-
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			Vector3 moveUp = new Vector3 (0f, ySpeed * Time.deltaTime, 0f);
-			transform.position += moveUp;
-		} else
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			Vector3 moveDown = new Vector3 (0f, -ySpeed * Time.deltaTime, 0f);
-			transform.position += moveDown;
-		}
-			//float newY = Mathf.Clamp (transform.position.y, ymin, ymax);
-			//transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-		}
-		*/
-		print (xmax);
 	}
 
-
+	void OnTriggerEnter2D (Collider2D other) {
+		switch (other.gameObject.tag) {
+			case "Switch":
+				other.gameObject.GetComponent<ISwitch>().Switch();
+				break;
+		}
+  }
 }
