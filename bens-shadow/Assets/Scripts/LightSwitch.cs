@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Director;
+
 
 
 public class LightSwitch : MonoBehaviour {
@@ -9,7 +9,6 @@ public class LightSwitch : MonoBehaviour {
     public GameController gc;
     private bool _switchOn;
     public Animator animator;
-
 
     void Start()
     {
@@ -24,7 +23,7 @@ public class LightSwitch : MonoBehaviour {
         
         if (gc.getCurrentDimension() == GameController.Dimension.Real) 
         {
-            _switchOn = true;     
+           _switchOn = true;     
         }
         if (gc.getCurrentDimension() == GameController.Dimension.Shadow) 
         {
