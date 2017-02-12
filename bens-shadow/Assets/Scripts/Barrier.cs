@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour, IActivatable {
 	private bool isOff;
-	// Use this for initialization
 
 	void Start () {
 		isOff = false;
@@ -19,6 +18,5 @@ public class Barrier : MonoBehaviour, IActivatable {
 			this.GetComponent<BoxCollider2D> ().enabled = true;
 			this.GetComponent<SpriteRenderer> ().enabled = true;
 		}
-
 	}
 }
