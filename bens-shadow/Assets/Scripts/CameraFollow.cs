@@ -3,11 +3,13 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 
-	public float xMin, xMax, yMin, yMax;
+	public float dampTime = 0.25f;
 
 	private GameController gc;
 	private Transform benLocation;
 	private Transform shadowLocation;
+
+ 	private Vector3 velocity = Vector3.zero;
 
 	void Start () {
 		gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
@@ -20,11 +22,8 @@ public class CameraFollow : MonoBehaviour {
 		if (gc.getCurrentDimension() == GameController.Dimension.Shadow) {
 			target = shadowLocation;
 		}
-		transform.position = new Vector3 (
-			Mathf.Clamp (target.position.x, xMin, xMax),
-			Mathf.Clamp (target.position.y, yMin, yMax),
-			transform.position.z
-		);
+		Vector3 specificVector = new Vector3(target.position.x, target.position.y, transform.position.z);
+   	transform.position = Vector3.Lerp(transform.position, specificVector, 1f * Time.deltaTime);
 	}
 
 }
