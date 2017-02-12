@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour, IActivatable {
 	private bool isOff;
-	private float scrollDownVelocity = 0.02f;
-	public Vector3 newPos;
+	private float scrollDownVelocity = 0.0002f;
+	public Vector3 movedBarrierPosition;
 	// Use this for initialization
 
 	private LayerMask mask;
 
-	private Vector3 targetLoc;
-	public GameObject targetObj;
-
 	void Start () {
+		Vector3 movedBarrierPosition = new Vector3 (-1.126446f, 0.7f, 0.39f);
 		isOff = false;
-		targetLoc = new Vector3 (targetObj.gameObject.transform.position.x, targetObj.gameObject.transform.position.y, targetObj.gameObject.transform.position.z);
 	}
 
 	void Update() {
-		if (isOff) {
-			animate ();
+		if (!isOff) {
+			return;
 		}
+		Animate ();
+		Debug.Log ("Animate enabled");
 	}
 
 	IEnumerator hi(){
@@ -40,19 +39,9 @@ public class Barrier : MonoBehaviour, IActivatable {
 
 	}
 
-	public void animate () {
-		/*Debug.Log ("Position before: " + transform.position.y);
-		float wallHeight = transform.lossyScale.y;
-		transform.position += Vector3.down * scrollDownVelocity * Time.deltaTime;
-		Debug.Log ("Position after " + transform.position.y);*/
-		transform.position = Vector3.MoveTowards (transform.position, targetLoc, scrollDownVelocity);
+	public void Animate () {
+		if (transform.position == movedBarrierPosition)
+			return;
+		transform.position = Vector3.MoveTowards (transform.position, movedBarrierPosition, scrollDownVelocity);
 	}
-
-//	void OnCollisionEnter2D(Collision2D col){
-//		if (col.transform.tag == "Player") {
-//			//GetComponent<Collider2D> ().enabled = false;
-//		}
-//	}
-
-
 }
