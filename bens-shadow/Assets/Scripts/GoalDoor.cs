@@ -22,16 +22,16 @@ public class GoalDoor : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (gc.getCurrentDimension() == GameController.Dimension.Real) {
+		if (col.tag == "Player") {
 			benReached = true;
 			gc.setDimensionShadow();
 		} else {
 			shadowReached = true;
-			gc.setDimensionShadow();
+			gc.setDimensionReal();
 		}
 	}
 
 	void wonGame() {
-		Debug.Log("Ben and his shadow escaped the facility!");
+		Application.LoadLevel("Ending Scene");
 	}
 }
