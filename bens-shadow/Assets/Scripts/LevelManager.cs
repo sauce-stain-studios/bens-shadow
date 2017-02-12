@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKey ("joystick button 0")) {
+		if (Input.GetKey("joystick button 0") || Input.GetKeyDown(KeyCode.Space)) {
 			Application.LoadLevel ("Level 1");
 		}
 	}

@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
 	void FixedUpdate() {
 		if (debugMode) {
 			// Dimension Switch Debug
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown(KeyCode.Tab)) {
 				if (currentDimension == Dimension.Real) {
 					setDimensionShadow();
 				} else {
