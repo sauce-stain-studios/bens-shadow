@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour, IActivatable {
 	private bool isOff;
-	public Vector3 newPos;
 	// Use this for initialization
 
 	void Start () {
