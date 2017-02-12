@@ -30,11 +30,17 @@ public class PlayerController : MonoBehaviour {
 		xmax = rightMost.x - padding;
 		ymin = downMost.y + padding;
 		ymax = upMost.y - padding;
+
+		if (activeDimension == GameController.Dimension.Shadow) {
+			GetComponent<SpriteRenderer>().enabled = false;
+		}
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (gc.getCurrentDimension() == activeDimension) {
+			GetComponent<SpriteRenderer>().enabled = true;
 			float vertical = Input.GetAxis("Vertical") * Time.deltaTime * ySpeed;
 			float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * xSpeed;
 			Vector3 movement = new Vector3 (horizontal, vertical, transform.position.z);
