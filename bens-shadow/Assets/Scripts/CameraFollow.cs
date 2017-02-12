@@ -9,8 +9,6 @@ public class CameraFollow : MonoBehaviour {
 	private Transform benLocation;
 	private Transform shadowLocation;
 
- 	private Vector3 velocity = Vector3.zero;
-
 	void Start () {
 		gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 		benLocation = GameObject.Find ("Ben").transform;
