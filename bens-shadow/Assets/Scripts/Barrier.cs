@@ -13,8 +13,10 @@ public class Barrier : MonoBehaviour, IActivatable {
 		isOff = !isOff;
 		if (isOff) {
 			this.GetComponent<BoxCollider2D> ().enabled = false;
+			this.GetComponent<SpriteRenderer> ().enabled = false;
 		} else {
 			this.GetComponent<BoxCollider2D> ().enabled = true;
+			this.GetComponent<SpriteRenderer> ().enabled = true;
 		}
 
 	}
