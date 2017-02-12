@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeLightIntensity : MonoBehaviour {
+    public float duration = 0.5F;
+    public Color realColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    public Color shadowColor  = new Color(0.85f, 0.4f, 0.9f, 0.5f);
 
-    public GameController gc;
-    public float bright = 1.0F;
-    public float dark = 0.5F;
+    Light lightValue;
+    GameController gc;
 
-
-    // Use this for initialization
-    void Start()
-    {
+    void Start() {
         gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-        GetComponent<Light>().intensity = dark;
-
+        lightValue = GetComponent<Light>();
+        lightValue.color = Color.white;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (gc.getCurrentDimension() == GameController.Dimension.Real)
-        {
-            GetComponent<Light>().intensity = dark;
+    void Update() {
+        Color color = realColor;
+        if (gc.getCurrentDimension() == GameController.Dimension.Shadow) {
+          color = shadowColor;
         }
-        else
-        {
-            GetComponent<Light>().intensity = bright;
-        }
+        lightValue.color = Color.Lerp(lightValue.color, color, 1f * Time.deltaTime);
     }
 }
