@@ -41,12 +41,4 @@ public class PlayerController : MonoBehaviour {
 			transform.position += movement;
 		}
 	}
-
-	void OnTriggerEnter2D (Collider2D other) {
-		switch (other.gameObject.tag) {
-			case "Switch":
-				other.gameObject.GetComponent<ISwitch>().Switch();
-				break;
-		}
-  }
 }

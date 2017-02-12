@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class ShadowSwitch : MonoBehaviour,ISwitch {
 
+    public Animator animator;
     public GameController gc;
     private bool _switchOn;
-    public Animator animator;
+    private bool visited = false;
+
 
     void Start()
     {
@@ -28,6 +30,16 @@ public class ShadowSwitch : MonoBehaviour,ISwitch {
       animator.SetBool("_switchOn", _switchOn);
     }
 
+    void OnTriggerEnter2D(Collider2D col) {
+  		if (!visited) {
+  			visited = true;
+  			Switch();
+  		}
+  	}
+
+    void OnTriggerExit2D(Collider2D col) {
+      visited = false;
+    }
 
     public void Switch() {
       if (gc.getCurrentDimension() == GameController.Dimension.Real) {
