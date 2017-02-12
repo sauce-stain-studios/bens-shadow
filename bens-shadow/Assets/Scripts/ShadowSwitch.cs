@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 
-public class LightSwitch : MonoBehaviour {
+public class ShadowSwitch : MonoBehaviour,ISwitch {
     
     public GameController gc;
     private bool _switchOn;
@@ -27,8 +28,26 @@ public class LightSwitch : MonoBehaviour {
         }
         if (gc.getCurrentDimension() == GameController.Dimension.Shadow) 
         {
-            _switchOn = false;
+            _switchOn = false; 
         }
         animator.SetBool("_switchOn", _switchOn);
+    }
+   
+
+    public void Switch()
+    {
+        Debug.Log("fgsdfgsdfg");
+        if (gc.getCurrentDimension() == GameController.Dimension.Real)
+        {
+            gc.setDimensionShadow();
+    
+            Debug.Log("s");
+        }
+       else if (gc.getCurrentDimension() == GameController.Dimension.Shadow)
+        {
+            gc.setDimensionReal();
+            Debug.Log("d");
+        }
+    
     }
 }
