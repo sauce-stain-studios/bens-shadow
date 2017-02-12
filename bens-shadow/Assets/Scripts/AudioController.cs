@@ -6,35 +6,27 @@ public class AudioController : MonoBehaviour {
 
 	private GameController gc;
 
-	public AudioSource audio;
+	public AudioSource audioSource;
 
  	public AudioClip RealDimensionMusic;
  	public AudioClip ShadowDimensionMusic;
-	private float pausedTime;
 
-	// Use this for initialization
 	void Start () {
 		gc = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-		// pausedTime = 0;
 		changeMusic();
 	}
 
 	public void changeMusic () {
-		float oldTime = audio.time;
+		float oldTime = audioSource.time;
 		if (gc.getCurrentDimension() == GameController.Dimension.Real) {
-			audio.clip = RealDimensionMusic;
+			audioSource.clip = RealDimensionMusic;
 		} else {
-			audio.clip = ShadowDimensionMusic;
+			audioSource.clip = ShadowDimensionMusic;
 		}
-		audio.Play();
+		audioSource.time = oldTime;
+		audioSource.Play();
 	}
 
 	void Update() {
-		// if (pausedTime <= 170) {
-		// 	pausedTime += Time.deltaTime;
-		// } else {
-		// 	pausedTime = 0;
-		// }
-		// Debug.Log (audio.time);
 	}
 }
