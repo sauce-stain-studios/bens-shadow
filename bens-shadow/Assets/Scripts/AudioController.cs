@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour {
 
 	private GameController gc;
 
-	public AudioSource audioSource;
+	public AudioSource audio;
 
  	public AudioClip RealDimensionMusic;
  	public AudioClip ShadowDimensionMusic;
@@ -19,11 +19,11 @@ public class AudioController : MonoBehaviour {
 
 	public void changeMusic () {
 		if (gc.getCurrentDimension() == GameController.Dimension.Real) {
-				audioSource.clip = RealDimensionMusic;
-				audioSource.Play();
+				audio.clip = RealDimensionMusic;
+				audio.Play();
 		} else {
-				audioSource.clip = ShadowDimensionMusic;
-				audioSource.Play();
+				audio.clip = ShadowDimensionMusic;
+				audio.Play();
 		}
 	}
 }
