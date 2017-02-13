@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager1 : MonoBehaviour {
 	private LevelManager gc;
 
 
@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetKey ("joystick button 0")) {
-			Application.LoadLevel ("StoryScene2");
+			Application.LoadLevel ("Story Scene");
 		}
 	}
 
