@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 981e549229c7b554ca3fdafc556d870c
+timeCreated: 1486943564
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pangolin
+  fontNames:
+  - Pangolin
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
